@@ -8,18 +8,6 @@ lvim.plugins = {
     lazy = false,
   },
   {
-    "pwntester/octo.nvim",
-    dependencies = {
-      'nvim-lua/plenary.nvim',
-      'nvim-telescope/telescope.nvim',
-      'nvim-tree/nvim-web-devicons',
-    },
-    config = function()
-      require("octo").setup()
-    end,
-
-  },
-  {
     "nvim-telescope/telescope.nvim",
     dependencies = {
       "nvim-lua/plenary.nvim",
@@ -31,27 +19,45 @@ lvim.plugins = {
     end,
   },
   {
-    "leoluz/nvim-dap-go",
+    "harrisoncramer/gitlab.nvim",
+    dependencies = {
+      "MunifTanjim/nui.nvim",
+      "nvim-lua/plenary.nvim",
+      "sindrets/diffview.nvim",
+      "stevearc/dressing.nvim", -- Recommended but not required. Better UI for pickers.
+      "nvim-tree/nvim-web-devicons" -- Recommended but not required. Icons in discussion tree.
+    },
+    enabled = true,
+    build = function () require("gitlab.server").build(true) end, -- Builds the Go binary
     config = function()
-      require("dap-go").setup()
-      require('dap.ext.vscode').load_launchjs(nil,{})
+      local gitlab = require("gitlab")
+      gitlab.setup()
+      vim.keymap.set("n", "gir", gitlab.review, {desc = "review"})
+      vim.keymap.set("n", "gis", gitlab.summary, {desc = "summary"})
+      vim.keymap.set("n", "giA", gitlab.approve, {desc = "approve"})
+      vim.keymap.set("n", "giR", gitlab.revoke, {desc = "revoke"})
+      vim.keymap.set("n", "gic", gitlab.create_comment, {desc = "commet"})
+      vim.keymap.set("v", "gic", gitlab.create_multiline_comment, {desc = "multilie comment"})
+      vim.keymap.set("v", "giC", gitlab.create_comment_suggestion, {desc = "suggest comment"})
+      vim.keymap.set("n", "giO", gitlab.create_mr, {desc = "create mr"})
+      vim.keymap.set("n", "gim", gitlab.move_to_discussion_tree_from_diagnostic, {desc = "discussion tree"})
+      vim.keymap.set("n", "gin", gitlab.create_note, {desc = "note"})
+      vim.keymap.set("n", "gid", gitlab.toggle_discussions, {desc = "toggle discussion"})
+      vim.keymap.set("n", "giaa", gitlab.add_assignee, {desc = "add"})
+      vim.keymap.set("n", "giad", gitlab.delete_assignee, {desc = "delete assignee"})
+      vim.keymap.set("n", "gila", gitlab.add_label, {desc = "add label"})
+      vim.keymap.set("n", "gild", gitlab.delete_label, {desc = "delete label"})
+      vim.keymap.set("n", "giva", gitlab.add_reviewer, {desc = "add reviewer"})
+      vim.keymap.set("n", "givd", gitlab.delete_reviewer, {desc = "delete reviewer"})
+      vim.keymap.set("n", "gip", gitlab.pipeline, {desc = "pipeline"})
+      vim.keymap.set("n", "gio", gitlab.open_in_browser, {desc = "browser"})
+      vim.keymap.set("n", "giM", gitlab.merge, {desc = "MERGE"})
+      lvim.builtin.which_key.mappings["gi"] = {
+        name = "gitlab"
+      }
     end,
   }
-
 }
-
-table.insert(lvim.plugins, {
-  "zbirenbaum/copilot-cmp",
-  event = "InsertEnter",
-  dependencies = { "zbirenbaum/copilot.lua" },
-  config = function()
-    vim.defer_fn(function()
-      require("copilot").setup()     -- https://github.com/zbirenbaum/copilot.lua/blob/master/README.md#setup-and-configuration
-      require("copilot_cmp").setup() -- https://github.com/zbirenbaum/copilot-cmp/blob/master/README.md#configuration
-    end, 100)
-  end,
-})
-
 
 vim.opt.relativenumber = true -- relative line numbers
 
@@ -61,8 +67,6 @@ lvim.keys.normal_mode["<C-h>"] = "<cmd>TmuxNavigateLeft<cr>"
 lvim.keys.normal_mode["<C-j>"] = "<cmd>TmuxNavigateDown<cr>"
 lvim.keys.normal_mode["<C-k>"] = "<cmd>TmuxNavigateUp<cr>"
 lvim.keys.normal_mode["<C-l>"] = "<cmd>TmuxNavigateRight<cr>"
-
-vim.opt.foldmethod = "expr"
-vim.opt.foldexpr = "nvim_treesitter#foldexpr()"
-vim.opt.foldenable = false
+lvim.builtin.which_key.setup.plugins.presets.z = true
+lvim.builtin.nvimtree.setup.view.side = "right"
 
