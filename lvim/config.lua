@@ -11,8 +11,7 @@ lvim.plugins = {
       "supermaven-inc/supermaven-nvim",
       config = function()
         require("supermaven-nvim").setup({})
-        api = require("supermaven-nvim.api")
-        api.use_free_version()
+        require("supermaven-nvim.api").use_free_version()
       end,
   },
   {
