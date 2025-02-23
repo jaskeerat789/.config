@@ -1,9 +1,11 @@
+# [general]
 # import = ["~/.config/alacritty/catppuccin-mocha.toml"]
+
 [font]
 size = 14
 
 [font.normal]
-family = "FiraCode Nerd Font"
+family = "JetBrainsMono Nerd Font"
 
 [window.padding]
 x = 10
@@ -11,8 +13,8 @@ y = 10
 
 [window]
 decorations = "Buttonless"
-blur = false
-opacity = 1
+blur = true
+opacity = 0.95
 
 [[keyboard.bindings]]
 chars = "\u001Bb"
