@@ -31,7 +31,7 @@ palette = 13=#f2aede
 palette = 14=#6bd7ca
 palette = 15=#bac2de
 font-size = 14
-font-family = FiraCode Nerd Font
+font-family = JetBrainsMono Nerd Font
 # font-family = JetBrainsMono Nerd Font
 window-padding-x = 10
 window-padding-y = 10
