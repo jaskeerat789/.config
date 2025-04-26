@@ -1,4 +1,5 @@
 local harpoon = require "harpoon"
+local kalulu = require "kulala"
 return {
   {
     "AstroNvim/astrocore",
@@ -14,9 +15,12 @@ return {
             '"_dd',
             desc = "Delete without cutting / replace old buffer",
           },
+          --- kalulu
+          ["<leader>R"] = {desc="kalulu"},
+          ["<leader>Rs"] = {function() kalulu.run() end, desc="run"},
           -- Harpoon
           ["<leader>h"] = {desc="harpoon"},
-          ["<C-e>"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon menu"},
+          ["<leader>hm"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon menu"},
           ["<leader>ha"] = { function() harpoon:list():add() end, desc = "Harpoon add"},
           ["<leader>hr"] = { function() harpoon:list():remove() end, desc = "Harpoon remove"},
           ["<C-1>"] = { function() harpoon:list():select(1) end, desc = "Goto mark 1" },
@@ -38,14 +42,6 @@ return {
           },
         },
         v = {
-          ["d"] = {
-            '"_d',
-            desc = "Delete without cutting / replace old buffer",
-          },
-          ["D"] = {
-            '"_D',
-            desc = "Delete line without cutting / replace old buffer",
-          },
           ["p"] = {
             '"_dP',
             desc = "Paste without replacing your buffer",
@@ -54,24 +50,8 @@ return {
             '"_dP',
             desc = "Paste without replacing your buffer",
           },
-          ["<S-Up>"] = {
-            ":'<,'> MoveBlock(-1)<CR>",
-            desc = "Move block up",
-          },
-          ["<S-Down>"] = {
-            ":'<,'> MoveBlock(1)<CR>",
-            desc = "Move block down",
-          },
-          ["<S-k>"] = {
-            ":'<,'> MoveBlock(-1)<CR>",
-            desc = "Move block up",
-          },
-          ["<S-j>"] = {
-            ":'<,'> MoveBlock(1)<CR>",
-            desc = "Move block down",
-          },
         },
-      }
+      },
     }
   }
 }
