@@ -15,14 +15,19 @@ return {
             '"_dd',
             desc = "Delete without cutting / replace old buffer",
           },
+          --- cycle through buffers
+          ["L"] = { function() require("astrocore.buffer").nav(vim.v.count1) end, desc = "Next buffer" },
+          ["H"] = { function() require("astrocore.buffer").nav(-vim.v.count1) end, desc = "Previous buffer" },
+          ["[b"] = false,
+          ["]b"] = false,
           --- kalulu
-          ["<leader>R"] = {desc="kalulu"},
-          ["<leader>Rs"] = {function() kalulu.run() end, desc="run"},
+          ["<leader>R"] = { desc = "kalulu" },
+          ["<leader>Rs"] = { function() kalulu.run() end, desc = "run" },
           -- Harpoon
-          ["<leader>h"] = {desc="harpoon"},
-          ["<leader>hm"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon menu"},
-          ["<leader>ha"] = { function() harpoon:list():add() end, desc = "Harpoon add"},
-          ["<leader>hr"] = { function() harpoon:list():remove() end, desc = "Harpoon remove"},
+          ["<leader>h"] = { desc = "harpoon" },
+          ["<leader>hm"] = { function() harpoon.ui:toggle_quick_menu(harpoon:list()) end, desc = "Harpoon menu" },
+          ["<leader>ha"] = { function() harpoon:list():add() end, desc = "Harpoon add" },
+          ["<leader>hr"] = { function() harpoon:list():remove() end, desc = "Harpoon remove" },
           ["<C-1>"] = { function() harpoon:list():select(1) end, desc = "Goto mark 1" },
           ["<C-2>"] = { function() harpoon:list():select(2) end, desc = "Goto mark 2" },
           ["<C-3>"] = { function() harpoon:list():select(3) end, desc = "Goto mark 3" },
@@ -52,6 +57,6 @@ return {
           },
         },
       },
-    }
-  }
+    },
+  },
 }
