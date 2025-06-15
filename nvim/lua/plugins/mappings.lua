@@ -41,10 +41,6 @@ return {
             "<cmd>ToggleTerm<CR>",
             desc = "Toggle Terminal",
           },
-          ["<Esc>"] = {
-            "<C-\\><C-n>",
-            desc = "Terminal Normal Vim Mode",
-          },
         },
         v = {
           ["p"] = {
