@@ -52,6 +52,16 @@ return {
             desc = "Paste without replacing your buffer",
           },
         },
+        -- v = {
+        --   ["p"] = {
+        --     '"_dP',
+        --     desc = "Paste without replacing your buffer",
+        --   },
+        --   ["P"] = {
+        --     '"_dP',
+        --     desc = "Paste without replacing your buffer",
+        --   },
+        -- },
       },
     },
   },
