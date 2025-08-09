@@ -2,10 +2,10 @@
 shell-integration = zsh
 clipboard-read = allow
 clipboard-write = allow
-window-decoration = true
+window-decoration = none
 macos-titlebar-style = hidden
 background-opacity = 0.80
-background-blur-radius = 10
+background-blur-radius = 20
 theme = catppuccin-mocha
 background = #1e1e2e
 foreground = #cdd6f4
