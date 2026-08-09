@@ -2,22 +2,40 @@
 shell-integration = zsh
 clipboard-read = allow
 clipboard-write = allow
-window-decoration = none
 macos-titlebar-style = hidden
 background-opacity = 0.80
 background-blur-radius = 20
 theme = Catppuccin Mocha
-background = #1e1e2e
-foreground = #cdd6f4
-selection-background = #585b70
-selection-foreground = #cdd6f4
-cursor-color = #f5e0dc
-cursor-text = #cdd6f4
+palette = 0=#45475a
+palette = 1=#f38ba8
+palette = 2=#a6e3a1
+palette = 3=#f9e2af
+palette = 4=#89b4fa
+palette = 5=#f5c2e7
+palette = 6=#94e2d5
+palette = 7=#a6adc8
+palette = 8=#585b70
+palette = 9=#f38ba8
+palette = 10=#a6e3a1
+palette = 11=#f9e2af
+palette = 12=#89b4fa
+palette = 13=#f5c2e7
+palette = 14=#94e2d5
+palette = 15=#bac2de
+background = 1e1e2e
+foreground = cdd6f4
+cursor-color = f5e0dc
+cursor-text = 11111b
+selection-background = 353749
+selection-foreground = cdd6f4
+split-divider-color = 313244
 cursor-invert-fg-bg = true
 cursor-style-blink = true
-font-size = 14
+font-size = 20
 font-family = JetBrainsMono Nerd Font
-# font-family = JetBrainsMono Nerd Font
-window-padding-x = 5
-window-padding-y = 5
-auto-update-channel = tip
+# Delete the previous word in shells and terminal applications.
+keybind = alt+backspace=text:\x1b\x7f
+# window-padding-x = 5
+# window-padding-y = 5
+macos-titlebar-style = hidden
+desktop-notifications = true
